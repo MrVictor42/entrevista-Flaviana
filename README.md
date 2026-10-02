@@ -27,14 +27,14 @@ O sistema será composto pelas seguintes entidades:
 
 * **Aluno**
 * **Professor**
-* **Displina**
+* **Disciplina**
 * **Nota**
 
 ---
 
 # Regras de relacionamento
 
-## Aluno × Displina
+## Aluno × Disciplina
 
 Um **aluno deve estar matriculado em uma ou mais disciplinas**.
 
