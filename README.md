@@ -164,13 +164,13 @@ erDiagram
         Long id
         String nome
         String email
-        String matricula
+        Long matricula
     }
 
     DISCIPLINA {
         Long id
         String nome
-        String codigo
+        Long codigo
         Long professor_id
     }
 
@@ -178,7 +178,7 @@ erDiagram
         Long id
         Long aluno_id
         Long disciplina_id
-        BigDecimal valor
+        Double valor
     }
 ```
 
@@ -197,7 +197,7 @@ Campos mínimos sugeridos:
 | `id`        | Long   | Sim         |
 | `nome`      | String | Sim         |
 | `email`     | String | Sim         |
-| `matricula` | String | Sim         |
+| `matricula` | Long   | Sim         |
 
 Um aluno deve possuir uma ou mais disciplinas.
 
@@ -229,7 +229,7 @@ Campos mínimos sugeridos:
 | ----------- | --------- | ----------- |
 | `id`        | Long      | Sim         |
 | `nome`      | String    | Sim         |
-| `codigo`    | String    | Sim         |
+| `codigo`    | Long      | Sim         |
 | `professor` | Professor | Sim         |
 
 Cada disciplina possui **exatamente um professor**.
