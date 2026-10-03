@@ -18,10 +18,10 @@ public class Nota {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "O valor da nota é obrigatório")
+    @NotNull(message = "A nota é obrigatória")
     @DecimalMin(value = "0.0", message = "A nota mínima é 0.0")
     @DecimalMax(value = "10.0", message = "A nota máxima é 10.0")
-    private Double valor;
+    private Double nota;
 
     @NotNull(message = "A nota deve estar associada a um aluno")
     @ManyToOne(fetch = FetchType.LAZY)
