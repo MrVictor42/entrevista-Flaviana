@@ -149,10 +149,10 @@ A implementação deve garantir que a nota esteja associada ao aluno e à discip
 ```mermaid
 erDiagram
 
-    PROFESSOR ||--|{ MATERIA : ministra
-    ALUNO }|--|{ MATERIA : matriculado_em
+    PROFESSOR ||--|{ DISCIPLINA : ministra
+    ALUNO }|--|{ DISCIPLINA : matriculado_em
     ALUNO ||--o{ NOTA : possui
-    MATERIA ||--o{ NOTA : possui
+    DISCIPLINA ||--o{ NOTA : possui
 
     PROFESSOR {
         Long id
@@ -247,7 +247,7 @@ Campos mínimos sugeridos:
 | Campo     | Tipo       | Obrigatório |
 | --------- | ---------- | ----------- |
 | `id`      | Long       | Sim         |
-| `valor`   | BigDecimal | Sim         |
+| `valor`   | Double     | Sim         |
 | `aluno`   | Aluno      | Sim         |
 | `disciplina` | Disciplina    | Sim         |
 
@@ -376,7 +376,7 @@ Exemplo:
 {
     "valor": 8.5,
     "alunoId": 1,
-    "materiaId": 2
+    "disciplinaId": 2
 }
 ```
 
@@ -421,7 +421,7 @@ GET /disciplinas/{id}/notas
 ### Consultar nota de um aluno em uma disciplina
 
 ```http
-GET /alunos/{alunoId}/disciplinas/{materiaId}/nota
+GET /alunos/{alunoId}/disciplinas/{disciplinaId}/nota
 ```
 
 ---
@@ -452,7 +452,7 @@ DISCIPLINA
  ├── codigo
  └── professor_id
 
-ALUNO_MATERIA
+ALUNO_DISCIPLINA
  ├── aluno_id
  └── disciplina_id
 
@@ -463,9 +463,9 @@ NOTA
  └── valor
 ```
 
-O relacionamento `Aluno x Materia` deverá ser representado como **Many-to-Many**, podendo utilizar uma tabela intermediária `ALUNO_MATERIA`.
+O relacionamento `Aluno x Disciplina` deverá ser representado como **Many-to-Many**, podendo utilizar uma tabela intermediária `ALUNO_DISCIPLINA`.
 
-A entidade `Nota` deverá possuir referências para `Aluno` e `Materia`.
+A entidade `Nota` deverá possuir referências para `Aluno` e `D`.
 
 ---
 
@@ -498,7 +498,7 @@ private String email;
 @NotNull
 @DecimalMin("0.0")
 @DecimalMax("10.0")
-private BigDecimal valor;
+private Double valor;
 ```
 
 ---
@@ -549,25 +549,25 @@ src/main/java
     ├── controller
     │   ├── AlunoController
     │   ├── ProfessorController
-    │   ├── MateriaController
+    │   ├── DisciplinaController
     │   └── NotaController
     │
     ├── service
     │   ├── AlunoService
     │   ├── ProfessorService
-    │   ├── MateriaService
+    │   ├── DisciplinaService
     │   └── NotaService
     │
     ├── repository
     │   ├── AlunoRepository
     │   ├── ProfessorRepository
-    │   ├── MateriaRepository
+    │   ├── DisciplinaRepository
     │   └── NotaRepository
     │
     ├── entity
     │   ├── Aluno
     │   ├── Professor
-    │   ├── Materia
+    │   ├── Discplina
     │   └── Nota
     │
     ├── dto
